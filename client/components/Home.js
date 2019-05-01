@@ -4,6 +4,11 @@ import * as actions from '../actions/actions';
 import { Redirect } from 'react-router-dom';
 import Artwork from './artwork';
 
+import { Trail, Spring } from "react-spring";
+
+import '../componentStyles/home.css';
+
+
 const axios = require('axios');
 
 let displayArt;
@@ -24,29 +29,32 @@ class Home extends Component {
   constructor(props) {
     super(props)
   }
-  
+
   componentDidMount() {
     console.log("ON WILL MOUNT: CALLING this.props.getArt()");
     this.props.getArt();
 
   }
-  
+
   render() {
     console.log("XXX", this.props.art);
     let parsedArt = this.props.art.map(el => {
       // console.log(el)
       return <Artwork data={el} />
     })
- 
+
     return (
-      <div>
+      <div id="pageContainer">
         {console.log("YYY", this.props.art)}
-        <h2>Current Art Available</h2>
-        {parsedArt}
+        <h2 id="pageTitle">Current Art Available</h2>
+        {/* ADD HERE THE FILTERING COMPONENTS */}
+        <div id="artTray">
+          {parsedArt}
+        </div>
       </div>
     )
   }
 
 }
-  
- export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
