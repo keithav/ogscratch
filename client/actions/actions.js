@@ -16,14 +16,16 @@ export const loginPassword = (password) => ({
 
 //This is where we use THUNK. This action creator makes a POST request to the server to verify username and password entered when logging in.
 export const verifyLogin = (username, password) => (dispatch) => {
-  console.log('LOGIN SENT TO VERIFYLOGIN')
-  console.log('THIS IS USERNAME', username)
-  console.log('THIS IS PASSWORD', password)
-  axios({
-    method: 'post',
-    url: '/api/testsignin', //test api route
-    data: { 'username': username, 'password': password }, //must send body of data in this format
-  })
+
+    console.log('LOGIN SENT TO VERIFYLOGIN')
+    console.log('THIS IS USERNAME', username)
+    console.log('THIS IS PASSWORD', password)
+    axios({
+        method: 'post',
+        url: '/api/login',
+        data: { 'username': username, 'password': password },
+    })
+
     .then(response => {
       console.log('this is res', response.data)
       //Once we receive a "no error" response from server, we dispatch action creator postUsernameAndPasswordSuccess

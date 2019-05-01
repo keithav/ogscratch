@@ -40,7 +40,6 @@ module.exports = {
   lookupSession: (req, res, next) => {
     if (res.locals.error) return next();
     db.query(`SELECT ac.username, ac.lat, ac.lng FROM accounts ac INNER JOIN sessions s ON ac.id = s.accountid WHERE s.sessionid='${res.locals.token}'`, (err, result) => {
-      console.log('+++++Result inside lookupSession', result);
       if (err) res.locals.error = err;
       else res.locals.result = result.rows[0];
       return next();

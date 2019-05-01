@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import { Redirect } from 'react-router-dom';
+const axios = require('axios');
 
 let displayArt;
 
@@ -25,13 +26,10 @@ class Home extends Component {
   componentDidMount() {
     // console.log('in didmount')
     // this.props.getArt();
-    fetch('http://localhost:3000/api/getallart')
+    axios.get('api/getallart')
     .then(res => {
-      return res.json()
-    })
-    .then(res => {
-      console.log('this is res in componened did mount ',res)
-      return displayArt = res.map(el => {
+      console.log('this is res in componened did mount ', res)
+       return displayArt = res.data.map(el => {
         return (
         <div className="artUnit">
         <img src={el.image} style={{height: 800 }}></img>
@@ -43,6 +41,24 @@ class Home extends Component {
         )
     })
   })
+  //   fetch('http://localhost:3000/api/getallart')
+  //   .then(res => {
+  //     return res.json()
+  //   })
+  //   .then(res => {
+  //     console.log('this is res in componened did mount ',res)
+  //     return displayArt = res.map(el => {
+  //       return (
+  //       <div className="artUnit">
+  //       <img src={el.image} style={{height: 800 }}></img>
+  //       <p className="unitTitle"><strong>{el.title}</strong></p>
+  //       <p>Description: {el.description}</p>
+  //       <p>Material: {el.material}</p>
+  //       <p>Price: {el.price}</p>
+  //       </div>
+  //       )
+  //   })
+  // })
 }
   
   render() {
