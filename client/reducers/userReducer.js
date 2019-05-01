@@ -12,6 +12,7 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
+  //declared variables to make sure we update state with new state.
   let newVerified;
   let newError;
   let newUsername;
@@ -21,23 +22,26 @@ const userReducer = (state = initialState, action) => {
   let newArtRecieved;
   let newArt;
 
-  switch(action.type) {
+  switch (action.type) {
+    //If you watch STATE in Redux devTools, you will see it update everytime a user types a letter
     case types.LOGIN_USERNAME:
       newUsername = action.payload.value;
       return {
         ...state,
         username: newUsername,
       };
-
+    //If you watch STATE in Redux devTools, you will see it update everytime a user types a letter
     case types.LOGIN_PASSWORD:
       newPassword = action.payload.value;
       return {
-          ...state,
-          password: newPassword,
+        ...state,
+        password: newPassword,
       };
 
     case types.POST_USERNAME_AND_PASSWORD_SUCCESS:
+
       console.log('$$$$$ POST USER AND PW SUCCESS');
+
       newVerified = true;
       return {
         ...state,
@@ -50,6 +54,7 @@ const userReducer = (state = initialState, action) => {
       // console.log('IN FAILUREREDUC', action.payload)
       // console.log('IN FAILURE error', action.payload.payload.response.data.error)
       console.log('$$$$$ POST USER AND PW FAILURE');
+
       newVerified = false;
       //coordinate with backend re err sent back from server//
       newError = action.payload.payload.response.data.error;
@@ -58,9 +63,11 @@ const userReducer = (state = initialState, action) => {
         verified: newVerified,
         error: newError,
       };
+
       
       case types.SIGNUP:
       console.log('$$$$$ SIGNUP');
+
       newNeedsToSignup = action.payload;
       return {
         ...state,
@@ -105,15 +112,17 @@ const userReducer = (state = initialState, action) => {
         artRecieved: newArtRecieved,
         art: newArt,
       };
+
       
       case types.POST_GET_ART_FAILURE:
       console.log('$$$$$ POST GET ART FAILURE');
+
       return {
         ...state,
       };
 
-      default:
-        return state;
+    default:
+      return state;
   }
 }
 
