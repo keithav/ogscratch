@@ -10,7 +10,7 @@ module.exports = {
   },
 
   signIn: (req, res, next) => {
-    console.log('+++++req.BODY in testSignIn', req.body);
+    console.log('+++++req.BODY in signIn', req.body);
     // Make sure to only grab relevant information for security reasons... we selected all for testing purposes.
     db.query(`SELECT * FROM accounts WHERE ("username"='${req.body.username}')`, (err, result) => {
       if (err) res.locals.error = err; 
@@ -27,7 +27,7 @@ module.exports = {
     const queryValues = [req.body.firstname, req.body.lastname, req.body.password, req.body.username, req.body.email, req.body.lng, req.body.lat, req.body.bio];
     const insertQuery = `INSERT INTO accounts("firstname", "lastname", "password", "username", "email", "lng", "lat", "bio") VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
     
-    // console.log('** queryValues inside testAuth', queryValues);
+    console.log('** queryValues inside signUp', queryValues);
 
     db.query(insertQuery, queryValues, (err, result) => {
       if (err) res.locals.error = err;
