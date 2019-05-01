@@ -31,19 +31,21 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log("ON WILL MOUNT: CALLING this.props.getArt()");
+    // console.log("ON WILL MOUNT: CALLING this.props.getArt()");
     this.props.getArt();
 
   }
 
   render() {
-    console.log("XXX", this.props.art);
+    // console.log("XXX", this.props.art);
     let parsedArt = this.props.art.map(el => {
       // console.log(el)
       return <Artwork data={el} />
     })
 
     return (
+
+
       <div id="pageContainer">
         {console.log("YYY", this.props.art)}
         <h2 id="pageTitle">Current Art Available</h2>
