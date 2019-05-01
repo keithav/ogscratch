@@ -74,10 +74,22 @@ There is a middleware method in the `testQueryController` that isn't used but ca
     <h2>testQueryController.testDistance</h2>
     expected input (JSON):
 
-      ```{
+      `{
         "lng":/*float val (reccomend to use browserAPI in frontend or Google Maps for postman to grab these coordinates)*/,
         "lat":/*float val (   "      "   "     "       "      "     "       "      "     "     "   "    "        "    )*/,
         "distance": /*int val in miles*/
-      }```
-
+      }
+      `
   </ul>
+  <ul>
+expected ouput: list of artwork rows from art table less than the distance provided
+<br>
+backend console message:
+   
+       +++++ Pulled array of artwork within ${req.body.distance} miles
+
+   </ul>
+   
+<h4>DISCLAIMER</h4>
+
+Although we did use the pythagorean theorem formula to measure distance beteen two points, WE DO NOT THINK THAT THE EARTH IS FLAT... we just didn't have enough time to apply the haversine formula to the SQL query
