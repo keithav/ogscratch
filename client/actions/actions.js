@@ -14,12 +14,40 @@ export const loginPassword = (password) => ({
   payload: password
 });
 
+export const signUpFirstName = (firstName) => ({
+  type: types.SIGNUP_FIRSTNAME,
+  payload: firstName
+});
+
+export const signUpLastName = (lastName) => ({
+  type: types.SIGNUP_LASTNAME,
+  payload: lastName
+});
+
+export const signUpEmail = (email) => ({
+  type: types.SIGNUP_EMAIL,
+  payload: email
+});
+
+export const signUpLatitude = (latitude) => ({
+  type: types.SIGNUP_LATITUDE,
+  payload: latitude
+});
+
+export const signUpLongitude = (longitude) => ({
+  type: types.SIGNUP_LONGITUDE,
+  payload: longitude
+});
+
+export const signUpBio = (bio) => ({
+  type: types.SIGNUP_BIO,
+  payload: bio
+});
+
 //This is where we use THUNK. This action creator makes a POST request to the server to verify username and password entered when logging in.
 export const verifyLogin = (username, password) => (dispatch) => {
 
-    console.log('LOGIN SENT TO VERIFYLOGIN')
-    console.log('THIS IS USERNAME', username)
-    console.log('THIS IS PASSWORD', password)
+    console.log('LOGIN SENT TO VERIFYLOGIN: ', username)
     axios({
         method: 'post',
         url: '/api/login',
@@ -66,12 +94,12 @@ export const signup = () => ({
 });
 
 //Using THUNK. Once a user enters a username and password, and clicks button Create Account (go to component Signup), this action creator sends a POST request to server. 
-export const createuser = (username, password) => (dispatch) => {
-  console.log('in createuser function about to post request')
+export const createuser = (username, password, firstName, lastName, email, longitude, latitude, bio) => (dispatch) => {
+  console.log('~~~createuser~~~  about to post request', firstName)
   axios({
     method: 'post',
-    url: '/api/testauth', //test api route
-    data: { 'username': username, 'password': password },
+    url: '/api/signup', //formerly testauth
+    data: { 'firstname': firstName, 'lastname': lastName, 'password': password, 'username': username, 'email': email, 'lng': longitude, 'lat': latitude, 'bio': bio},
   })
     .then(response => {
       //Once we receive a "no error" response from server, we dispatch action creator postCreateUserSuccess
