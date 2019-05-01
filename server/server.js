@@ -54,6 +54,7 @@ app.post('/api/testauth/',
   (req, res) => {
     if (res.locals.error) res.send(res.locals.error);
     else res.send(res.locals.result);
+    // console.log('END OF SIGNUP ROUTE ERROR', res.locals.error);
   }
   )
 

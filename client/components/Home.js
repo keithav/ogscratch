@@ -4,6 +4,11 @@ import * as actions from '../actions/actions';
 import { Redirect } from 'react-router-dom';
 import Artwork from './artwork';
 
+import { Trail, Spring } from "react-spring";
+
+import '../componentStyles/home.css';
+
+
 const axios = require('axios');
 
 let displayArt;
@@ -39,10 +44,15 @@ class Home extends Component {
     })
 
     return (
-      <div>
-        {/* {console.log("YYY", this.props.art)} */}
-        <h2>Current Art Available</h2>
-        {parsedArt}
+
+
+      <div id="pageContainer">
+        {console.log("YYY", this.props.art)}
+        <h2 id="pageTitle">Current Art Available</h2>
+        {/* ADD HERE THE FILTERING COMPONENTS */}
+        <div id="artTray">
+          {parsedArt}
+        </div>
       </div>
     )
   }
