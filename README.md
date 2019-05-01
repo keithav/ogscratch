@@ -67,7 +67,16 @@ testSignIn: `SELECT * FROM testAuth...`
 signIn: `SELECT * FROM accounts...`
 
 
-<h3> Misc. </h3>
+<h3>cookieController and bycryptController</h3>
+These two controllers behave very similarly in both the test and production api but there is one notable difference in the productionAPI
+
+in the ```api/findByDistance``` route, the backend will lookup a username provided by the frontend or postman in the request cookies, this will give the sessionID which is looked up in the sessions table in the DB
+
+the sessions table has a foreign key pointing to accounts which will allow the sessions table to pull important information, such as the location of the user via (lng,lat)
+
+THIS CAN LEAD TO A SECURITY EXPLOIT WHERE A PERSON CAN HAVE A COOKIE GENERATED FOR A USER SO IF ANYONE IS WORKING ON THIS PROJECT PLEASE CHANGE THE LOGIN IN HOW THE SESSIONS TABLE IS ACCESSED
+
+<h2> Misc. </h2>
 
 There is a middleware method in the `testQueryController` that isn't used but can be implemented in a GET/POST to test our method of fetching art based on lng/lat GPS distance
   <ul>
