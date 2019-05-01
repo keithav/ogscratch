@@ -29,8 +29,8 @@ class Signup extends Component {
     }
 
     render() {
-      if (this.props.userCreated === true && homeAfterSignupLoaded === false) {
-        homeAfterSignupLoaded = true;
+      if (this.props.userCreated === true) {
+        //homeAfterSignupLoaded = true;
         return <Redirect to="/Home"></Redirect>
       }
       return (

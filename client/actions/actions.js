@@ -28,7 +28,7 @@ export const verifyLogin = (username, password) => (dispatch) => {
     console.log('THIS IS PASSWORD', password)
     axios({
         method: 'post',
-        url: '/api/testsignin',
+        url: '/api/login',
         data: { 'username': username, 'password': password },
     })
     .then(response => {

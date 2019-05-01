@@ -71,6 +71,21 @@ app.post('/api/testsignin',
     } 
     else res.send(res.locals.result);
   });
+
+
+app.post('/api/login', 
+  queryController.signIn, 
+  bcryptController.verifyPassword, 
+  cookieController.setSSIDCookie, 
+  sessionController.verifySession, 
+  sessionController.lookupSession, 
+  (req, res) => {
+    if (res.locals.error) {
+      res.send(res.locals.error);
+      res.status(501);
+    } 
+    else res.send(res.locals.result);
+  });
   
   app.post('/api/findbydistance',
   queryController.signIn,
@@ -82,6 +97,7 @@ app.post('/api/testsignin',
       res.status(501);
     }
     else res.send(res.locals.result);
+    console.log('+++++END of findbyDist route', res.locals.result);
   })
 
 app.get('/*', (req, res) => {
