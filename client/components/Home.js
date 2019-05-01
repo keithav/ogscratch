@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import { Redirect } from 'react-router-dom';
+import Artwork from './artwork';
+
 const axios = require('axios');
 
 let displayArt;
@@ -24,52 +26,27 @@ class Home extends Component {
   }
   
   componentDidMount() {
-    // console.log('in didmount')
-    // this.props.getArt();
-    axios.get('api/getallart')
-    .then(res => {
-      console.log('this is res in componened did mount ', res)
-       return displayArt = res.data.map(el => {
-        return (
-        <div className="artUnit">
-        <img src={el.image} style={{height: 800 }}></img>
-        <p className="unitTitle"><strong>{el.title}</strong></p>
-        <p>Description: {el.description}</p>
-        <p>Material: {el.material}</p>
-        <p>Price: {el.price}</p>
-        </div>
-        )
-    })
-  })
-  //   fetch('http://localhost:3000/api/getallart')
-  //   .then(res => {
-  //     return res.json()
-  //   })
-  //   .then(res => {
-  //     console.log('this is res in componened did mount ',res)
-  //     return displayArt = res.map(el => {
-  //       return (
-  //       <div className="artUnit">
-  //       <img src={el.image} style={{height: 800 }}></img>
-  //       <p className="unitTitle"><strong>{el.title}</strong></p>
-  //       <p>Description: {el.description}</p>
-  //       <p>Material: {el.material}</p>
-  //       <p>Price: {el.price}</p>
-  //       </div>
-  //       )
-  //   })
-  // })
-}
+    console.log("ON WILL MOUNT: CALLING this.props.getArt()");
+    this.props.getArt();
+
+  }
   
   render() {
+    console.log("XXX", this.props.art);
+    let parsedArt = this.props.art.map(el => {
+      // console.log(el)
+      return <Artwork data={el} />
+    })
+ 
     return (
       <div>
+        {console.log("YYY", this.props.art)}
         <h2>Current Art Available</h2>
-      {console.log('this is display art', displayArt)}
-      {displayArt}
+        {parsedArt}
       </div>
     )
   }
+
 }
   
  export default connect(mapStateToProps, mapDispatchToProps)(Home);

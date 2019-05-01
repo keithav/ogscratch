@@ -8,7 +8,7 @@ const initialState = {
   needsToSignup: false,
   userCreated: false,
   artRecieved: false,
-  art: null,
+  art: [],
 };
 
 const userReducer = (state = initialState, action) => {
@@ -92,26 +92,25 @@ const userReducer = (state = initialState, action) => {
       console.log('$$$$$ POST GET ART SUCCESS');
       newArtRecieved = true;
       newArt = action.payload.payload;
-      //console.log('this is newArt ', newArt)
+      console.log('this is newArt ', newArt)
       
-      const newArtParsed = newArt.map(el => {
-        return (
-          <div className="artUnit">
-        <img src={el.image} style={{height: 100 }}></img>
-        <p className="unitTitle">{el.title}</p>
-        <p>Artist: {el.artist}</p>
-        <p>Description: {el.description}</p>
-        <p>Material: {el.material}</p>
-        <p>Price: {el.price}</p>
-        </div>
-
-        )
-      })
+      // const newArtParsed = newArt.map(el => {
+      //   return (
+      //     <div className="artUnit">
+      //   <img src={el.image} style={{height: 100 }}></img>
+      //   <p className="unitTitle">{el.title}</p>
+      //   <p>Artist: {el.artist}</p>
+      //   <p>Description: {el.description}</p>
+      //   <p>Material: {el.material}</p>
+      //   <p>Price: {el.price}</p>
+      //   </div>
+      //   )
+      // })
       
       return {
         ...state,
         artRecieved: newArtRecieved,
-        art: newArtParsed,
+        art: newArt,
       };
 
       
