@@ -47,6 +47,9 @@ When logging in, errors relative to the error will be send back in the form of a
   "error": "invalid username" 
 }
 ```
+<h4>Error handling </h4>
+
+With this in place, our error checking system works where the rest of the middleware in a request will be ignored with the error being sent instead
 
 When successfully logging in/creating an account, an object will be sent with the row of the new user as well as other extras relating to SQL
 
@@ -54,5 +57,27 @@ When successfully logging in/creating an account, an object will be sent with th
 
 In the "productionAPI," some of the controllers look similar but behave differently
 
-<h3>`queryController.testSignIn`</h3>
+<h3> testQueryController.testSignIn </h3>
 
+Used to lookup a valid username stored in the database
+`queryController.signIn` behaves identical except for the fact that the query is called on a different table
+
+testSignIn: `SELECT * FROM testAuth...` 
+
+signIn: `SELECT * FROM accounts...`
+
+
+<h3> Misc. </h3>
+
+There is a middleware method in the `testQueryController` that isn't used but can be implemented in a GET/POST to test our method of fetching art based on lng/lat GPS distance
+  <ul>
+    <h2>testQueryController.testDistance</h2>
+    expected input (JSON):
+
+      ```{
+        "lng":/*float val (reccomend to use browserAPI in frontend or Google Maps for postman to grab these coordinates)*/,
+        "lat":/*float val (   "      "   "     "       "      "     "       "      "     "     "   "    "        "    )*/,
+        "distance": /*int val in miles*/
+      }```
+
+  </ul>
