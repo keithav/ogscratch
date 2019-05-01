@@ -16,32 +16,30 @@ export const loginPassword = (password) => ({
 
 //This is where we use THUNK. This action creator makes a POST request to the server to verify username and password entered when logging in.
 export const verifyLogin = (username, password) => (dispatch) => {
-
-    console.log('LOGIN SENT TO VERIFYLOGIN')
-    console.log('THIS IS USERNAME', username)
-    console.log('THIS IS PASSWORD', password)
-    axios({
-        method: 'post',
-        url: '/api/login',
-        data: { 'username': username, 'password': password },
-    })
+  axios({
+    method: 'post',
+    url: '/api/login',
+    data: { 'username': username, 'password': password },
+  })
 
     .then(response => {
-      console.log('this is res', response.data)
+      //console.log('this is response ON CORRECT INPUT', response);
+      //console.log('this is response ON ERROR INPUT', response);
+
       //Once we receive a "no error" response from server, we dispatch action creator postUsernameAndPasswordSuccess
       //Dispatch takes an object as an argument (action creator object)
       return dispatch(
-        postUsernameAndPasswordSuccess({
-          type: types.POST_USERNAME_AND_PASSWORD_SUCCESS,
-          payload: response.data
+        postUsernameAndPasswordRequest({
+          type: types.POST_USERNAME_AND_PASSWORD_REQUEST,
+          payload: response
         })
       )
     })
     //If we receive an error from the server (i.e. incorrect username or password), we dispatch action creator postUsernameAndPasswordFailure
     .catch(
       error => dispatch(
-        postUsernameAndPasswordFailure({
-          type: types.POST_USERNAME_AND_PASSWORD_FAILURE,
+        postUsernameAndPasswordRequestFailure({
+          type: types.POST_USERNAME_AND_PASSWORD_REQUEST_FAILURE,
           payload: error
         })
       )
@@ -49,13 +47,13 @@ export const verifyLogin = (username, password) => (dispatch) => {
 }
 
 //Used above in verifyLogin, utilizing THUNK 
-export const postUsernameAndPasswordSuccess = (res) => ({
-  type: types.POST_USERNAME_AND_PASSWORD_SUCCESS,
+export const postUsernameAndPasswordRequest = (res) => ({
+  type: types.POST_USERNAME_AND_PASSWORD_REQUEST,
   payload: res
 });
 
-export const postUsernameAndPasswordFailure = (err) => ({
-  type: types.POST_USERNAME_AND_PASSWORD_FAILURE,
+export const postUsernameAndPasswordRequestFailure = (err) => ({
+  type: types.POST_USERNAME_AND_PASSWORD_REQUEST_FAILURE,
   payload: err
 });
 

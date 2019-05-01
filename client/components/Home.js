@@ -24,23 +24,23 @@ class Home extends Component {
   constructor(props) {
     super(props)
   }
-  
+
   componentDidMount() {
-    console.log("ON WILL MOUNT: CALLING this.props.getArt()");
+    // console.log("ON WILL MOUNT: CALLING this.props.getArt()");
     this.props.getArt();
 
   }
-  
+
   render() {
-    console.log("XXX", this.props.art);
+    // console.log("XXX", this.props.art);
     let parsedArt = this.props.art.map(el => {
       // console.log(el)
       return <Artwork data={el} />
     })
- 
+
     return (
       <div>
-        {console.log("YYY", this.props.art)}
+        {/* {console.log("YYY", this.props.art)} */}
         <h2>Current Art Available</h2>
         {parsedArt}
       </div>
@@ -48,5 +48,5 @@ class Home extends Component {
   }
 
 }
-  
- export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

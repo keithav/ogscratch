@@ -38,62 +38,60 @@ const userReducer = (state = initialState, action) => {
         password: newPassword,
       };
 
-    case types.POST_USERNAME_AND_PASSWORD_SUCCESS:
+    case types.POST_USERNAME_AND_PASSWORD_REQUEST:
+      if (!action.payload.payload.data.error) {
+        newVerified = true;
+      } else {
+        console.log(action.payload.payload.data.error)
+        newVerified = null;
+      }
 
-      console.log('$$$$$ POST USER AND PW SUCCESS');
-
-      newVerified = true;
       return {
         ...state,
         verified: newVerified,
         // May need to reset certain areas of state (error, etc.)
         // error: null
       };
-      
-      case types.POST_USERNAME_AND_PASSWORD_FAILURE:
-      // console.log('IN FAILUREREDUC', action.payload)
-      // console.log('IN FAILURE error', action.payload.payload.response.data.error)
-      console.log('$$$$$ POST USER AND PW FAILURE');
 
+    case types.POST_USERNAME_AND_PASSWORD_REQUEST_FAILURE:
       newVerified = false;
+      console.log('Server Error')
       //coordinate with backend re err sent back from server//
-      newError = action.payload.payload.response.data.error;
       return {
         ...state,
         verified: newVerified,
-        error: newError,
       };
 
-      
-      case types.SIGNUP:
-      console.log('$$$$$ SIGNUP');
+
+    case types.SIGNUP:
+      //console.log('$$$$$ SIGNUP');
 
       newNeedsToSignup = action.payload;
       return {
         ...state,
         needsToSignup: newNeedsToSignup,
       };
-      
-      case types.POST_CREATE_USER_SUCCESS:
-      console.log('$$$$$ POST CREATE USER SUCCESS');
+
+    case types.POST_CREATE_USER_SUCCESS:
+      //console.log('$$$$$ POST CREATE USER SUCCESS');
       newUserCreated = true;
       return {
         ...state,
         userCreated: newUserCreated,
       };
-      
-      case types.POST_CREATE_USER_FAILURE:
-      console.log('$$$$$ POST CREATE USER FAILURE');
+
+    case types.POST_CREATE_USER_FAILURE:
+      //console.log('$$$$$ POST CREATE USER FAILURE');
       return {
         ...state,
       };
-      
-      case types.POST_GET_ART_SUCCESS:
-      console.log('$$$$$ POST GET ART SUCCESS');
+
+    case types.POST_GET_ART_SUCCESS:
+      //sconsole.log('$$$$$ POST GET ART SUCCESS');
       newArtRecieved = true;
       newArt = action.payload.payload;
       console.log('this is newArt ', newArt)
-      
+
       // const newArtParsed = newArt.map(el => {
       //   return (
       //     <div className="artUnit">
@@ -106,16 +104,16 @@ const userReducer = (state = initialState, action) => {
       //   </div>
       //   )
       // })
-      
+
       return {
         ...state,
         artRecieved: newArtRecieved,
         art: newArt,
       };
 
-      
-      case types.POST_GET_ART_FAILURE:
-      console.log('$$$$$ POST GET ART FAILURE');
+
+    case types.POST_GET_ART_FAILURE:
+      //console.log('$$$$$ POST GET ART FAILURE');
 
       return {
         ...state,
