@@ -7,11 +7,9 @@
 body {
   padding: 0px;
   margin: 0px;
-
 }
 
 button:focus {outline:0;}
-
 
 #signupMainContainer {
   margin: 0px;
@@ -26,7 +24,6 @@ button:focus {outline:0;}
   background: -webkit-linear-gradient(to right, #267871, #136a8a);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #267871, #136a8a);
   color: #F8F9F9; 
-
 }
 
 #signupFormContainer {
@@ -36,8 +33,6 @@ button:focus {outline:0;}
   align-items: space-between;
   text-align: center;
   box-shadow: 18px 18px 20px -12px rgba(217, 217, 217, 0.35)
-
-
 }
 
 #submitContainer {
@@ -56,6 +51,13 @@ button:focus {outline:0;}
   margin-bottom: 10px;
 }
 
-input {
+input.signup {
   width: 60%;
+  margin: 5px;
+  float: right;
+}
+
+label.signup {
+  float: left;
+  margin: 8px;
 }

@@ -11,7 +11,9 @@ module.exports = {
   },
   
   getAllArtPriceAscending: (req, res, next) => {
-    db.query("SELECT a.id, a.title, ac.firstname, ac.lastname, a.price, a.image, a.material, a.width, a.height, a.description FROM art a INNER JOIN accounts ac ON a.artist = ac.id WHERE (69 * SQRT((POW(-118.4-a.lng,2))+(POW(33.98-a.lat,2))) < 10) ORDER BY (a.width * a.height) ASC", (err, result) => {
+    console.log(Number(req.query.latitude), Number(req.query.longitude), Number(req.query.distance));
+    db.query(`SELECT a.id, a.title, ac.firstname, ac.lastname, a.price, a.image, a.material, a.width, a.height, a.description FROM art a INNER JOIN accounts ac ON a.artist = ac.id WHERE (69 * SQRT((POW(${Number(req.query.longitude)}-a.lng,2))+(POW(${Number(req.query.latitude)}-a.lat,2))) < ${Number(req.query.distance)}) ORDER BY (a.width * a.height) ASC`, (err, result) => {
+      console.log("XXX", req.query);
       if (err) res.locals.error = err;
       else res.locals.result = result;
       // console.log('+++GETALLART by PRICE+++ Result', result.rows);
@@ -27,7 +29,7 @@ module.exports = {
       else {
         res.locals.result = result.rows[0]; // we have access to the hash
         if (res.locals.result === undefined) res.locals.error = { error: 'Invalid username' };
-        console.log('+++SIGNIN QUERY RESULT+++', res.locals.result);
+        console.log('+++LOGIN QUERY RESULT+++', res.locals.result);
       }
       return next();
     })
