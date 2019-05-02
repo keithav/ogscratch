@@ -12,11 +12,11 @@ module.exports = {
   verifyPassword: (req, res, next) => {
     if (res.locals.error) return next();
     if (bcrypt.compareSync(req.body.password, res.locals.result.password)) {
-      console.log('Login success');
+      console.log('+++BCRYPT Login success');
     } 
     else {
       res.locals.error = { error: 'Invalid password' };
-      console.log('Login unsuccessfull');
+      console.log('---BCRYPT Login unsuccessfull');
     }
     return next();
   },

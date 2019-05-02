@@ -9,13 +9,13 @@ module.exports = {
     // CREATING A COOKIE IF IT DOESN'T EXIST IN THE CLIENT
   //  console.log('++++COOKIEZ IN SSID', req.cookies);
     if (!req.cookies[res.locals.result.username]) {
-      console.log('+++++COOKIE DOES NOT EXIST');
+      console.log('---NO COOKIE--- creating cookie...');
       let payload = { username: res.locals.result.username };
       let token = jwt.sign(payload, superSecretKey, { expiresIn: 60 });
       res.locals.token = token;
       res.cookie(res.locals.result.username, token, { httpOnly: true });
     } else {
-      console.log('+++++COOKIE DOES EXIST');
+      console.log('+++COOKIE FOUND+++');
       res.locals.token = req.cookies[res.locals.result.username];
     }
 

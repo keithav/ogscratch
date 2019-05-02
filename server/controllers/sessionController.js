@@ -12,7 +12,7 @@ module.exports = {
       
       // IF LOOKUP RETURNS NO SESSIONS, CREATE A SESSION, STASH RESULT
       if (result.rows[0] === undefined) {
-        console.log('+++++Session does not exist. Creating a new session');
+        console.log('---NO SESSION--- creating session...');
         const queryValues = [res.locals.token, res.locals.result.id];
         const insertQuery = `INSERT INTO sessions("sessionid","accountid") VALUES($1, $2) RETURNING *`;
         
@@ -30,7 +30,7 @@ module.exports = {
         
       // IF LOOKUP RETURNS EXISTING SESSION, STASH RESULT
       } else {
-        console.log('+++++Session found');
+        console.log('+++SESSION FOUND+++');
         res.locals.result = result.rows[0];
         return next();
       }
@@ -42,6 +42,7 @@ module.exports = {
     db.query(`SELECT ac.username, ac.lat, ac.lng FROM accounts ac INNER JOIN sessions s ON ac.id = s.accountid WHERE s.sessionid='${res.locals.token}'`, (err, result) => {
       if (err) res.locals.error = err;
       else res.locals.result = result.rows[0];
+      // console.log('+++LOOKUP SESSION RESULT+++', res.locals.token);
       return next();
     })
   },

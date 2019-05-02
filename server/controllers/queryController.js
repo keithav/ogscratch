@@ -2,22 +2,23 @@ const db = require('../db.js');
 
 module.exports = {
   getAllArt: (req, res, next) => {
-    db.query('SELECT * FROM art', (err, result) => {
+    db.query('SELECT a.title, ac.firstname, ac.lastname, a.price, a.image, a.material, a.width, a.height, a.description FROM art a INNER JOIN accounts ac ON a.artist = ac.id', (err, result) => {
       if (err) res.locals.error = err;
       else res.locals.result = result;
+      console.log('+++GETALLART+++ Result', result.rows);
       return next();
     })
   },
 
   signIn: (req, res, next) => {
-    console.log('+++++req.BODY in signIn', req.body);
+    console.log('+++req.BODY in signIn', req.body);
     // Make sure to only grab relevant information for security reasons... we selected all for testing purposes.
     db.query(`SELECT * FROM accounts WHERE ("username"='${req.body.username}')`, (err, result) => {
       if (err) res.locals.error = err;
       else {
         res.locals.result = result.rows[0]; // we have access to the hash
         if (res.locals.result === undefined) res.locals.error = { error: 'Invalid username' };
-        console.log('+++++RESULT in SignIn', res.locals.result);
+        console.log('+++SIGNIN QUERY RESULT+++', res.locals.result);
       }
       return next();
     })
@@ -33,7 +34,7 @@ module.exports = {
       if (err) res.locals.error = err;
       else {
         res.locals.result = result.rows[0];
-        console.log('+++++Item added to db', res.locals.result);
+        // console.log('+++ROW ADDED TO DB+++', res.locals.result);
       }
       return next();
     })
@@ -41,8 +42,7 @@ module.exports = {
 
   // This method has been tested in POSTMAN and it WORKS! Come see Jaime or Keith if any questions.
   findByDistance: (req, res, next) => {
-    console.log(res.locals.result);
-    // PYTHAGOREAN THEOREM to determine distance between two plotted points. Since our unit of measurement in this formula is degrees of lat/long, we multiply by 69 to convert it into miles (each degree is 60 nautical miles, and there are 1.15 statute miles in a nautical mile-- 60 * 1.15 = 69)
+    console.log('~~~RESULT in findbyDistance', res.locals.result);
     db.query(`SELECT * FROM art WHERE (69 * SQRT((POW(${res.locals.result.lng}-"lng",2))+(POW(${res.locals.result.lat}-"lat",2))) < ${req.body.distance})`, (err, result) => {
       if (err) {
         res.locals.error = err

@@ -101,6 +101,7 @@ const userReducer = (state = initialState, action) => {
       }
       return {
         ...state,
+        password: '',
         verified: newVerified,
         // May need to reset certain areas of state (error, etc.)
         // error: null
@@ -130,7 +131,6 @@ const userReducer = (state = initialState, action) => {
       newUserCreated = true;
       return {
         ...state,
-        username: '',
         password: '',
         firstName: '',
         lastName: '',
