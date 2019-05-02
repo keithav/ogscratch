@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import { Redirect } from 'react-router-dom';
 import Artwork from './artwork';
-import Logout from './Logout';
 import { Link } from 'react-router-dom';
+import Logout from './Logout';
 
 import { Trail, Spring } from "react-spring";
 
@@ -23,7 +23,10 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   getArt: () => {
     dispatch(actions.getArt())
-  }
+  },
+  clearStateOnLogout: () => {
+    dispatch(actions.clearStateOnLogout())
+  },
 });
 
 
@@ -58,7 +61,9 @@ class Home extends Component {
     return (
       <div id="pageContainer">
         <h1 id="pageTitle">Current Art Available</h1>
-        {this.props.username}{'  '}<Link to="/">Logout</Link>
+        <div id="usernameLink">
+          <strong>{this.props.username}<Link to="/logout">Logout</Link></strong>
+        </div>
         <div id="artTray">
           {parsedArt}
         </div>

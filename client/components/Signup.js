@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 
 import '../componentStyles/signup.css';
 
-let homeAfterSignupLoaded = false;
 
 const mapStateToProps = store => ({
   username: store.userTraffic.username,
@@ -57,7 +56,6 @@ class Signup extends Component {
 
   render() {
     if (this.props.userCreated === true) {
-      //homeAfterSignupLoaded = true;
       return <Redirect to="/Home"></Redirect>
     }
     return (

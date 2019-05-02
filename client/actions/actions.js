@@ -176,3 +176,8 @@ export const postGetArtFailure = (err) => ({
   payload: err
 });
 
+export const clearStateOnLogout = () => ({
+  type: types.CLEAR_STATE_ON_LOGOUT,
+  payload: true
+})
+
