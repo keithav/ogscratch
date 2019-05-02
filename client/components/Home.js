@@ -3,17 +3,18 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import { Redirect } from 'react-router-dom';
 import Artwork from './artwork';
+import Logout from './Logout';
+import { Link } from 'react-router-dom';
 
 import { Trail, Spring } from "react-spring";
 
 import '../componentStyles/home.css';
 
 
-const axios = require('axios');
 
-let displayArt;
 
 const mapStateToProps = store => ({
+  username: store.userTraffic.username,
   error: store.userTraffic.error,
   art: store.userTraffic.art,
 });
@@ -47,8 +48,8 @@ class Home extends Component {
 
 
       <div id="pageContainer">
-        {console.log("YYY", this.props.art)}
         <h2 id="pageTitle">Current Art Available</h2>
+        {this.props.username}{'  '}<Link to="/">Logout</Link>
         {/* ADD HERE THE FILTERING COMPONENTS */}
         <div id="artTray">
           {parsedArt}

@@ -101,7 +101,7 @@ export const createuser = (username, password, firstName, lastName, email, longi
   axios({
     method: 'post',
     url: '/api/signup', //formerly testauth
-    data: { 'firstname': firstName, 'lastname': lastName, 'password': password, 'username': username, 'email': email, 'lng': longitude, 'lat': latitude, 'bio': bio},
+    data: { 'firstname': firstName, 'lastname': lastName, 'password': password, 'username': username, 'email': email, 'lng': longitude, 'lat': latitude, 'bio': bio },
   })
     .then(response => {
       //Once we receive a "no error" response from server, we dispatch action creator postCreateUserSuccess
@@ -175,3 +175,4 @@ export const postGetArtFailure = (err) => ({
   type: types.POST_GET_ART_FAILURE,
   payload: err
 });
+

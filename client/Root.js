@@ -6,6 +6,7 @@ import Main from './containers/MainContainer';
 import Home from './components/Home';
 import Signup from './components/Signup';
 import store from './store';
+import Logout from './components/Logout';
 
 
 //IMPORTANT - any new components added that will be displayed upon rerouting, must make route here first. Follow pattern below. 
@@ -16,6 +17,7 @@ const Root = ({ store }) => (
             <Route path='/signin' component={Signin} />
             <Route path='/home' component={Home} />
             <Route path='/signup' component={Signup} />
+            <Route path='/logout' component={Logout} />
         </Router>
     </Provider>
 )
