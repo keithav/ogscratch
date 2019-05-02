@@ -74,7 +74,7 @@ class Home extends Component {
         <div id="usernameLink">
           <strong>{this.props.username}<Link to="/logout">Logout</Link></strong>
         </div>
-        
+        {/* console.log('this is a tiny change'); */}
         <input type="text" onChange={(e) => this.props.updateDistance(e)}></input>
         <button onClick={(e) => {
           e.preventDefault();
