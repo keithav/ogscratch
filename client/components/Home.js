@@ -50,19 +50,15 @@ class Home extends Component {
 
 
     let parsedArt = this.props.art.map(el => {
-      // console.log(el)
       return <Artwork data={el} />
     })
 
 
 
     return (
-
-
       <div id="pageContainer">
-        <h2 id="pageTitle">Current Art Available</h2>
+        <h1 id="pageTitle">Current Art Available</h1>
         {this.props.username}{'  '}<Link to="/">Logout</Link>
-        {/* ADD HERE THE FILTERING COMPONENTS */}
         <div id="artTray">
           {parsedArt}
         </div>
