@@ -44,6 +44,11 @@ export const signUpBio = (bio) => ({
   payload: bio
 });
 
+export const updateDistance = (distance) => ({
+  type: types.UPDATE_DISTANCE,
+  payload: distance
+});
+
 //This is where we use THUNK. This action creator makes a POST request to the server to verify username and password entered when logging in.
 export const verifyLogin = (username, password) => (dispatch) => {
 
@@ -143,6 +148,53 @@ export const getArt = () => (dispatch) => {
     method: 'get',
     url: '/api/getallartpriceascending' //api test route
   })
+    .then(response => {
+      //Once we receive a "no error" response from server, we dispatch action creator postGetArtSuccess
+      //Dispatch takes an object as an argument (action creator object)
+      return dispatch(
+        postGetArtSuccess({
+          type: types.POST_GET_ART_SUCCESS,
+          payload: response.data
+        })
+      )
+    })
+    .catch(
+      //If we receive an error from the server (i.e. something failed), we dispatch action creator postGetArtFailure
+      error => dispatch(
+        postGetArtFailure({
+          type: types.POST_GET_ART_FAILURE,
+          payload: error
+        })
+      )
+    )
+}
+
+export const getArtSorted = (latitude, longitude, distance) => (dispatch) => {
+  console.log('in getArtSorted function about to get request')
+  console.log("CHECK: ", latitude, longitude, distance)
+  // axios({
+  //   method: 'get',
+  //   {
+  //     params: {
+  //       latitude: Number(latitude),
+  //       longitude: Number(longitude),
+  //       distance: Number(distance)
+  //     }
+  //   },
+  //   url: '/api/getallartpriceascending', //api test route
+    
+  // })
+  axios.get(
+    '/api/getallartpriceascending',
+    {
+      params: {
+        latitude: Number(latitude),
+        longitude: Number(longitude),
+        distance: Number(distance)
+      }
+    },
+    
+  )
     .then(response => {
       //Once we receive a "no error" response from server, we dispatch action creator postGetArtSuccess
       //Dispatch takes an object as an argument (action creator object)

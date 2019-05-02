@@ -65,43 +65,43 @@ class Signup extends Component {
         <div id="signupFormContainer">
           <h3>Signup</h3>
           <div id="firstNameContainer">
-            <label htmlFor="signUpFirstName">First Name: </label>
-            <input type="text" onChange={(e) => this.props.signUpFirstName(e)} id="FirstName" placeholder="FirstName" required></input>
+            <label htmlFor="signUpFirstName" className="signup">First Name: </label>
+            <input type="text" className="signup" onChange={(e) => this.props.signUpFirstName(e)} id="FirstName" placeholder="FirstName" required></input>
           </div>
 
           <div id="lastNameContainer">
-            <label htmlFor="signUpLastName">Last Name: </label>
-            <input type="text" onChange={(e) => this.props.signUpLastName(e)} id="LastName" placeholder="LastName" required></input>
+            <label htmlFor="signUpLastName" className="signup">Last Name: </label>
+            <input type="text"  className="signup" onChange={(e) => this.props.signUpLastName(e)} id="LastName" placeholder="LastName" required></input>
           </div>
 
           <div id="emailContainer">
-            <label htmlFor="signUpEmail">Email Addr: </label>
-            <input type="text" onChange={(e) => this.props.signUpEmail(e)} id="Email" placeholder="Email" required></input>
+            <label htmlFor="signUpEmail" className="signup">Email Addr: </label>
+            <input type="text" className="signup" onChange={(e) => this.props.signUpEmail(e)} id="Email" placeholder="Email" required></input>
           </div>
 
           <div id="userContainer">
-            <label htmlFor="loginUsername">Username: </label>
-            <input type="text" onChange={(e) => this.props.loginUsername(e)} id="username" placeholder="username" required></input>
+            <label htmlFor="loginUsername" className="signup">Username: </label>
+            <input type="text" className="signup" onChange={(e) => this.props.loginUsername(e)} id="username" placeholder="username" required></input>
           </div>
 
           <div id="passwordContainer2">
-            <label hmtlFor="loginPassword">Password: </label>
-            <input type="password" onChange={(e) => this.props.loginPassword(e)} id="password" placeholder="password" required></input>
+            <label hmtlFor="loginPassword" className="signup">Password: </label>
+            <input type="password" className="signup" onChange={(e) => this.props.loginPassword(e)} id="password" placeholder="password" required></input>
           </div>
 
           <div id="latContainer">
-            <label htmlFor="signUpLatitude">Latitude: </label>
-            <input type="text" onChange={(e) => this.props.signUpLatitude(e)} id="Latitude" placeholder="Latitude" required></input>
+            <label htmlFor="signUpLatitude" className="signup">Latitude: </label>
+            <input type="text" className="signup" onChange={(e) => this.props.signUpLatitude(e)} id="Latitude" placeholder="Latitude" required></input>
           </div>
 
           <div id="longContainer">
-            <label htmlFor="signUpLongitude">Longitude: </label>
-            <input type="text" onChange={(e) => this.props.signUpLongitude(e)} id="Longitude" placeholder="Longitude" required></input>
+            <label htmlFor="signUpLongitude" className="signup">Longitude: </label>
+            <input type="text" className="signup" onChange={(e) => this.props.signUpLongitude(e)} id="Longitude" placeholder="Longitude" required></input>
           </div>
 
           <div id="bioContainer">
-            <label htmlFor="signUpBio">Short Bio: </label>
-            <input type="text" onChange={(e) => this.props.signUpBio(e)} id="Bio" placeholder="Bio" required></input>
+            <label htmlFor="signUpBio" className="signup">Short Bio: </label>
+            <input type="text" className="signup" onChange={(e) => this.props.signUpBio(e)} id="Bio" placeholder="Bio" required></input>
           </div>
 
           <div id="submitContainer">

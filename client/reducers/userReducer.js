@@ -9,6 +9,7 @@ const initialState = {
   longitude: '',
   latitude: '',
   bio: '',
+  distance: 50,
   verified: null,
   error: null,
   needsToSignup: false,
@@ -28,6 +29,7 @@ const userReducer = (state = initialState, action) => {
   let newLongitude;
   let newLatitude;
   let newBio;
+  let newDistance;
   let newNeedsToSignup;
   let newUserCreated;
   let newArtRecieved;
@@ -91,6 +93,13 @@ const userReducer = (state = initialState, action) => {
         bio: newBio,
       };
 
+    case types.UPDATE_DISTANCE:
+      newDistance = action.payload.value;
+      return {
+        ...state,
+        distance: newDistance,
+      };
+
     case types.POST_USERNAME_AND_PASSWORD_REQUEST:
       if (!action.payload.payload.data.error) {
         newVerified = true;
@@ -98,9 +107,12 @@ const userReducer = (state = initialState, action) => {
         alert(action.payload.payload.data.error);
         newVerified = null;
       }
+
       return {
         ...state,
         password: '',
+        latitude: action.payload.payload.data.lat,
+        longitude: action.payload.payload.data.lng,
         verified: newVerified,
       };
 
@@ -122,14 +134,17 @@ const userReducer = (state = initialState, action) => {
 
     case types.POST_CREATE_USER_SUCCESS:
       newUserCreated = true;
+
+      console.log('%%% USER SUCCESS ACTION PAYLOAD %%%', action.payload);
       return {
         ...state,
+        username: action.payload.payload.username,
         password: '',
         firstName: '',
         lastName: '',
         email: '',
-        longitude: '',
-        latitude: '',
+        longitude: action.payload.payload.lng,
+        latitude: action.payload.payload.lat,
         bio: '',
         userCreated: newUserCreated,
       };
