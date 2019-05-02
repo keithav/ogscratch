@@ -18,7 +18,6 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-  //declared variables to make sure we update state with new state.
   let newVerified;
   let newError;
   let newUsername;
@@ -96,21 +95,18 @@ const userReducer = (state = initialState, action) => {
       if (!action.payload.payload.data.error) {
         newVerified = true;
       } else {
-        console.log(action.payload.payload.data.error)
+        alert(action.payload.payload.data.error);
         newVerified = null;
       }
       return {
         ...state,
         password: '',
         verified: newVerified,
-        // May need to reset certain areas of state (error, etc.)
-        // error: null
       };
 
     case types.POST_USERNAME_AND_PASSWORD_REQUEST_FAILURE:
       newVerified = false;
       console.log('Server Error')
-      //coordinate with backend re err sent back from server//
       return {
         ...state,
         verified: newVerified,
@@ -118,8 +114,6 @@ const userReducer = (state = initialState, action) => {
 
 
     case types.SIGNUP:
-      //console.log('$$$$$ SIGNUP');
-
       newNeedsToSignup = action.payload;
       return {
         ...state,
@@ -127,7 +121,6 @@ const userReducer = (state = initialState, action) => {
       };
 
     case types.POST_CREATE_USER_SUCCESS:
-      //console.log('$$$$$ POST CREATE USER SUCCESS');
       newUserCreated = true;
       return {
         ...state,
@@ -142,29 +135,14 @@ const userReducer = (state = initialState, action) => {
       };
 
     case types.POST_CREATE_USER_FAILURE:
-      //console.log('$$$$$ POST CREATE USER FAILURE');
+      console.log('Server Error When Creating User');
       return {
         ...state,
       };
 
     case types.POST_GET_ART_SUCCESS:
-      //sconsole.log('$$$$$ POST GET ART SUCCESS');
       newArtRecieved = true;
       newArt = action.payload.payload;
-      console.log('this is newArt ', newArt)
-
-      // const newArtParsed = newArt.map(el => {
-      //   return (
-      //     <div className="artUnit">
-      //   <img src={el.image} style={{height: 100 }}></img>
-      //   <p className="unitTitle">{el.title}</p>
-      //   <p>Artist: {el.artist}</p>
-      //   <p>Description: {el.description}</p>
-      //   <p>Material: {el.material}</p>
-      //   <p>Price: {el.price}</p>
-      //   </div>
-      //   )
-      // })
 
       return {
         ...state,
@@ -174,7 +152,7 @@ const userReducer = (state = initialState, action) => {
 
 
     case types.POST_GET_ART_FAILURE:
-      //console.log('$$$$$ POST GET ART FAILURE');
+      console.log('Server Error When Obtaining Art')
 
       return {
         ...state,
