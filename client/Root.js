@@ -13,8 +13,8 @@ import Logout from './components/Logout';
 const Root = ({ store }) => (
     <Provider store={store}>
         <Router>
-            <Route path='/' component={Main} />
-            <Route path='/signin' component={Signin} />
+            {/* <Route path='/' component={Main} /> */}
+            <Route exact path='/' component={Signin} />
             <Route path='/home' component={Home} />
             <Route path='/signup' component={Signup} />
             <Route path='/logout' component={Logout} />

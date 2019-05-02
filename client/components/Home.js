@@ -17,6 +17,7 @@ const mapStateToProps = store => ({
   username: store.userTraffic.username,
   error: store.userTraffic.error,
   art: store.userTraffic.art,
+  verified: store.userTraffic.verified
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -39,10 +40,21 @@ class Home extends Component {
 
   render() {
     // console.log("XXX", this.props.art);
+
+    //testy
+    console.log("VERIFIED IS: ", this.props.verified)
+    if (this.props.verified != true) {
+      // loaded = true;
+      return <Redirect to="/"></Redirect>
+    }
+
+
     let parsedArt = this.props.art.map(el => {
       // console.log(el)
       return <Artwork data={el} />
     })
+
+
 
     return (
 
