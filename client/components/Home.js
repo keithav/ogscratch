@@ -42,11 +42,11 @@ class Home extends Component {
     // console.log("XXX", this.props.art);
 
     //testy
-    console.log("VERIFIED IS: ", this.props.verified)
-    if (this.props.verified != true) {
-      // loaded = true;
-      return <Redirect to="/"></Redirect>
-    }
+    // console.log("VERIFIED IS: ", this.props.verified)
+    // if (this.props.verified != true) {
+    //   // loaded = true;
+    //   return <Redirect to="/"></Redirect>
+    // }
 
 
     let parsedArt = this.props.art.map(el => {

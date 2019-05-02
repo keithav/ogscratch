@@ -141,7 +141,7 @@ export const getArt = () => (dispatch) => {
   console.log('in getArt function about to get request')
   axios({
     method: 'get',
-    url: '/api/getallart' //api test route
+    url: '/api/getallartpriceascending' //api test route
   })
     .then(response => {
       //Once we receive a "no error" response from server, we dispatch action creator postGetArtSuccess
