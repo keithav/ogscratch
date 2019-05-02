@@ -71,10 +71,10 @@ class Signup extends Component {
           <input type="text" onChange={(e) => this.props.loginUsername(e)} id="username" placeholder="username"></input>
           <label hmtlFor="loginPassword">Password</label>
           <input type="password" onChange={(e) => this.props.loginPassword(e)} id="password" placeholder="password"></input>
-          <label htmlFor="signUpLongitude">Longitude</label>
-          <input type="text" onChange={(e) => this.props.signUpLongitude(e)} id="Longitude" placeholder="Longitude"></input>
           <label htmlFor="signUpLatitude">Latitude</label>
           <input type="text" onChange={(e) => this.props.signUpLatitude(e)} id="Latitude" placeholder="Latitude"></input>
+          <label htmlFor="signUpLongitude">Longitude</label>
+          <input type="text" onChange={(e) => this.props.signUpLongitude(e)} id="Longitude" placeholder="Longitude"></input>
           <label htmlFor="signUpBio">Short Bio</label>
           <input type="text" onChange={(e) => this.props.signUpBio(e)} id="Bio" placeholder="Bio"></input>
           <button onClick={(e) => { e.preventDefault(); this.props.createuser(this.props.username, this.props.password, this.props.firstName, this.props.lastName, this.props.email, this.props.longitude, this.props.latitude, this.props.bio)}}>Create Account</button>

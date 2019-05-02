@@ -27,23 +27,23 @@ app.use(function(req, res, next) {
   next();
 });
 
+// app.use('/build', express.static(path.join(__dirname, '../build')));
 
-app.get('/api/getallart/', testQueryController.getAllArt, (req, res) => {
+app.get('/api/getallart/', queryController.getAllArt, (req, res) => {
   if (res.locals.error) res.send(res.locals.error);
   else res.send(res.locals.result.rows);
 });
 
-// testing for sign up route
-app.post('/api/testauth/', 
-  testBcryptController.hashPassword, 
-  testQueryController.testAuth, 
-  testCookieController.setSSIDCookie, 
-  testSessionController.verifySession, 
-  testSessionController.lookupSession, 
-  (req, res) => {
-    if (res.locals.error) res.send(res.locals.error);
-    else res.send(res.locals.result);
-  });
+// app.post('/api/testauth/', 
+//   testBcryptController.hashPassword, 
+//   testQueryController.testAuth, 
+//   testCookieController.setSSIDCookie, 
+//   testSessionController.verifySession, 
+//   testSessionController.lookupSession, 
+//   (req, res) => {
+//     if (res.locals.error) res.send(res.locals.error);
+//     else res.send(res.locals.result);
+//   });
 
   app.post('/api/signup', 
   bcryptController.hashPassword,
@@ -58,20 +58,19 @@ app.post('/api/testauth/',
   }
   )
 
-// testing for login route
-app.post('/api/testsignin', 
-  testQueryController.testSignIn, 
-  testBcryptController.verifyPassword, 
-  testCookieController.setSSIDCookie, 
-  testSessionController.verifySession, 
-  testSessionController.lookupSession, 
-  (req, res) => {
-    if (res.locals.error) {
-      res.send(res.locals.error);
-      res.status(501);
-    } 
-    else res.send(res.locals.result);
-  });
+// app.post('/api/testsignin', 
+//   testQueryController.testSignIn, 
+//   testBcryptController.verifyPassword, 
+//   testCookieController.setSSIDCookie, 
+//   testSessionController.verifySession, 
+//   testSessionController.lookupSession, 
+//   (req, res) => {
+//     if (res.locals.error) {
+//       res.send(res.locals.error);
+//       res.status(501);
+//     } 
+//     else res.send(res.locals.result);
+//   });
 
 
 app.post('/api/login', 
@@ -95,10 +94,11 @@ app.post('/api/login',
   queryController.findByDistance, (req, res) => {
     if (res.locals.error) {
       res.send(res.locals.error);
+      console.log('~~err~~ at end of findDist', res.locals.error);
       res.status(501);
     }
     else res.send(res.locals.result);
-    console.log('+++++END of findbyDist route', res.locals.result);
+    console.log('===END=== findbyDist route', res.locals.result);
   })
 
 app.get('/*', (req, res) => {
