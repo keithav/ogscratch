@@ -19,6 +19,6 @@ export const GET_ART = 'GET_ART';
 export const POST_GET_ART_SUCCESS = 'POST_GET_ART_SUCCESS';
 export const POST_GET_ART_FAILURE = 'POST_GET_ART_FAILURE';
 
-export const CLEAR_STATE_ON_LOGOUT = 'CLEAR_STATE_ON_LOGOUT';
+export const CLEAR_STATE = 'CLEAR_STATE';
 
 

@@ -30,13 +30,17 @@ const mapDispatchToProps = dispatch => ({
   signup: () => {
     dispatch(actions.signup())
   },
-  clearStateOnLogout: () => {
-    dispatch(actions.clearStateOnLogout())
+  clearState: () => {
+    dispatch(actions.clearState())
   }
 })
 class Signin extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.clearState();
   }
 
   render() {

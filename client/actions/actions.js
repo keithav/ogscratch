@@ -182,7 +182,7 @@ export const getArtSorted = (latitude, longitude, distance) => (dispatch) => {
   //     }
   //   },
   //   url: '/api/getallartpriceascending', //api test route
-    
+
   // })
   axios.get(
     '/api/getallartpriceascending',
@@ -193,7 +193,7 @@ export const getArtSorted = (latitude, longitude, distance) => (dispatch) => {
         distance: Number(distance)
       }
     },
-    
+
   )
     .then(response => {
       //Once we receive a "no error" response from server, we dispatch action creator postGetArtSuccess
@@ -228,8 +228,8 @@ export const postGetArtFailure = (err) => ({
   payload: err
 });
 
-export const clearStateOnLogout = () => ({
-  type: types.CLEAR_STATE_ON_LOGOUT,
+export const clearState = () => ({
+  type: types.CLEAR_STATE,
   payload: true
 })
 

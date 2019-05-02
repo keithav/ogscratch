@@ -10,8 +10,8 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	clearStateOnLogout: () => {
-		dispatch(actions.clearStateOnLogout())
+	clearState: () => {
+		dispatch(actions.clearState())
 	},
 })
 class Logout extends Component {
@@ -20,7 +20,7 @@ class Logout extends Component {
 	}
 	componentWillMount() {
 
-		this.props.clearStateOnLogout();
+		this.props.clearState();
 	}
 
 	render() {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import '../componentStyles/signup.css';
 
@@ -45,7 +46,7 @@ const mapDispatchToProps = dispatch => ({
   },
   createuser: (username, password, firstName, lastName, email, longitude, latitude, bio) => {
     dispatch(actions.createuser(username, password, firstName, lastName, email, longitude, latitude, bio))
-  }
+  },
 })
 
 
@@ -69,7 +70,7 @@ class Signup extends Component {
 
           <div id="lastNameContainer">
             <label htmlFor="signUpLastName" className="signup">Last Name: </label>
-            <input type="text"  className="signup" onChange={(e) => this.props.signUpLastName(e)} id="LastName" placeholder="LastName" required></input>
+            <input type="text" className="signup" onChange={(e) => this.props.signUpLastName(e)} id="LastName" placeholder="LastName" required></input>
           </div>
 
           <div id="emailContainer">
@@ -104,6 +105,9 @@ class Signup extends Component {
 
           <div id="submitContainer">
             <button onClick={(e) => { e.preventDefault(); this.props.createuser(this.props.username, this.props.password, this.props.firstName, this.props.lastName, this.props.email, this.props.longitude, this.props.latitude, this.props.bio) }}>Create Account</button>
+          </div>
+          <div id="goback">
+            <Link to="/">Go Back</Link>
           </div>
         </div>
       </div>
