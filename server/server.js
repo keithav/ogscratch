@@ -34,6 +34,11 @@ app.get('/api/getallart/', queryController.getAllArt, (req, res) => {
   else res.send(res.locals.result.rows);
 });
 
+app.get('/api/getallartpriceascending/', queryController.getAllArtPriceAscending, (req, res) => {
+  if (res.locals.error) res.send(res.locals.error);
+  else res.send(res.locals.result.rows);
+});
+
 // app.post('/api/testauth/', 
 //   testBcryptController.hashPassword, 
 //   testQueryController.testAuth, 

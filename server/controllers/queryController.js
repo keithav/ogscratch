@@ -5,7 +5,16 @@ module.exports = {
     db.query('SELECT a.title, ac.firstname, ac.lastname, a.price, a.image, a.material, a.width, a.height, a.description FROM art a INNER JOIN accounts ac ON a.artist = ac.id', (err, result) => {
       if (err) res.locals.error = err;
       else res.locals.result = result;
-      console.log('+++GETALLART+++ Result', result.rows);
+      // console.log('+++GETALLART+++ Result', result.rows);
+      return next();
+    })
+  },
+  
+  getAllArtPriceAscending: (req, res, next) => {
+    db.query("SELECT a.id, a.title, ac.firstname, ac.lastname, a.price, a.image, a.material, a.width, a.height, a.description FROM art a INNER JOIN accounts ac ON a.artist = ac.id WHERE (69 * SQRT((POW(-118.4-a.lng,2))+(POW(33.98-a.lat,2))) < 10) ORDER BY (a.width * a.height) ASC", (err, result) => {
+      if (err) res.locals.error = err;
+      else res.locals.result = result;
+      // console.log('+++GETALLART by PRICE+++ Result', result.rows);
       return next();
     })
   },
@@ -43,7 +52,7 @@ module.exports = {
   // This method has been tested in POSTMAN and it WORKS! Come see Jaime or Keith if any questions.
   findByDistance: (req, res, next) => {
     console.log('~~~RESULT in findbyDistance', res.locals.result);
-    db.query(`SELECT * FROM art WHERE (69 * SQRT((POW(${res.locals.result.lng}-"lng",2))+(POW(${res.locals.result.lat}-"lat",2))) < ${req.body.distance})`, (err, result) => {
+    db.query(`SELECT * FROM art WHERE (69 * SQRT((POW(${res.locals.result.lng}-lng,2))+(POW(${res.locals.result.lat}-lat,2))) < ${req.body.distance})`, (err, result) => {
       if (err) {
         res.locals.error = err
         console.log('~~~~~Error inside findByDistance', err);
