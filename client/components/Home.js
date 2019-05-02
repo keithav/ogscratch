@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import { Redirect } from 'react-router-dom';
 import Artwork from './artwork';
-import Logout from './Logout';
 import { Link } from 'react-router-dom';
+import Logout from './Logout';
 
 import { Trail, Spring } from "react-spring";
 
@@ -24,9 +24,18 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+<<<<<<< HEAD
   getArt: () => dispatch(actions.getArt()),
   updateDistance: (event) => dispatch(actions.updateDistance(event.target)),
   getArtSorted: (latitude, longitude, distance) => dispatch(actions.getArtSorted(latitude, longitude, distance)),
+=======
+  getArt: () => {
+    dispatch(actions.getArt())
+  },
+  clearStateOnLogout: () => {
+    dispatch(actions.clearStateOnLogout())
+  },
+>>>>>>> 31313f615d4278d30ab2a1b7aa6b8ec550cb9dca
 });
 
 
@@ -61,13 +70,17 @@ class Home extends Component {
     return (
       <div id="pageContainer">
         <h1 id="pageTitle">Current Art Available</h1>
+
+        <div id="usernameLink">
+          <strong>{this.props.username}<Link to="/logout">Logout</Link></strong>
+        </div>
         
-        {this.props.username}{'  '}<Link to="/">Logout</Link>
         <input type="text" onChange={(e) => this.props.updateDistance(e)}></input>
         <button onClick={(e) => {
           e.preventDefault();
           this.props.getArtSorted(this.props.latitude, this.props.longitude, this.props.distance);
         }}>Submit</button>
+
         <div id="artTray">
           {parsedArt}
         </div>

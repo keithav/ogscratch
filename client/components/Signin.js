@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import '../componentStyles/signin.css';
 
 
-let homeloaded = false;
+
 let signuploaded = false;
 
 const mapStateToProps = store => ({
@@ -30,6 +30,9 @@ const mapDispatchToProps = dispatch => ({
   signup: () => {
     dispatch(actions.signup())
   },
+  clearStateOnLogout: () => {
+    dispatch(actions.clearStateOnLogout())
+  }
 })
 class Signin extends Component {
   constructor(props) {
@@ -37,8 +40,7 @@ class Signin extends Component {
   }
 
   render() {
-    if (this.props.verified === true && homeloaded === false) {
-      homeloaded = true;
+    if (this.props.verified === true) {
       return <Redirect to="/Home"></Redirect>
     }
     else if (this.props.needsToSignup === true && signuploaded === false) {

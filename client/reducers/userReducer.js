@@ -16,6 +16,8 @@ const initialState = {
   userCreated: false,
   artRecieved: false,
   art: [],
+  logout: false,
+  clearLogout: '',
 };
 
 const userReducer = (state = initialState, action) => {
@@ -34,6 +36,8 @@ const userReducer = (state = initialState, action) => {
   let newUserCreated;
   let newArtRecieved;
   let newArt;
+  let newLogout;
+  let newClearLogout;
 
   switch (action.type) {
 
@@ -171,6 +175,42 @@ const userReducer = (state = initialState, action) => {
 
       return {
         ...state,
+      };
+
+    case types.CLEAR_STATE_ON_LOGOUT:
+      console.log('In clear logout reducer')
+      newVerified = null;
+      newError = null;
+      newUsername = '';
+      newPassword = '';
+      newFirstName = '';
+      newLastName = '';
+      newEmail = '';
+      newLongitude = '';
+      newLatitude = '';
+      newBio = '';
+      newNeedsToSignup = false;
+      newUserCreated = false;
+      newArtRecieved = false;
+      newArt = [];
+      newLogout = action.payload;
+
+      return {
+        username: newUsername,
+        password: newPassword,
+        firstName: newFirstName,
+        lastName: newLastName,
+        email: newEmail,
+        longitude: newLongitude,
+        latitude: newLatitude,
+        bio: newBio,
+        verified: newVerified,
+        error: newError,
+        needsToSignup: newNeedsToSignup,
+        userCreated: newUserCreated,
+        artRecieved: newArtRecieved,
+        art: newArt,
+        logout: newLogout,
       };
 
     default:
