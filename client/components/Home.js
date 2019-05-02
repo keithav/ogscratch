@@ -24,18 +24,10 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-<<<<<<< HEAD
   getArt: () => dispatch(actions.getArt()),
   updateDistance: (event) => dispatch(actions.updateDistance(event.target)),
   getArtSorted: (latitude, longitude, distance) => dispatch(actions.getArtSorted(latitude, longitude, distance)),
-=======
-  getArt: () => {
-    dispatch(actions.getArt())
-  },
-  clearStateOnLogout: () => {
-    dispatch(actions.clearStateOnLogout())
-  },
->>>>>>> 31313f615d4278d30ab2a1b7aa6b8ec550cb9dca
+  clearStateOnLogout: () => dispatch(actions.clearStateOnLogout()),
 });
 
 
