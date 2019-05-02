@@ -167,25 +167,13 @@ export const getArt = () => (dispatch) => {
         })
       )
     )
-}
+};
 
-export const getArtSorted = (latitude, longitude, distance) => (dispatch) => {
+export const getArtPriceAscending = (latitude, longitude, distance) => (dispatch) => {
   console.log('in getArtSorted function about to get request')
   console.log("CHECK: ", latitude, longitude, distance)
-  // axios({
-  //   method: 'get',
-  //   {
-  //     params: {
-  //       latitude: Number(latitude),
-  //       longitude: Number(longitude),
-  //       distance: Number(distance)
-  //     }
-  //   },
-  //   url: '/api/getallartpriceascending', //api test route
-    
-  // })
   axios.get(
-    '/api/getallartpriceascending',
+    '/api/getartpriceascending',
     {
       params: {
         latitude: Number(latitude),
@@ -196,8 +184,6 @@ export const getArtSorted = (latitude, longitude, distance) => (dispatch) => {
     
   )
     .then(response => {
-      //Once we receive a "no error" response from server, we dispatch action creator postGetArtSuccess
-      //Dispatch takes an object as an argument (action creator object)
       return dispatch(
         postGetArtSuccess({
           type: types.POST_GET_ART_SUCCESS,
@@ -206,7 +192,6 @@ export const getArtSorted = (latitude, longitude, distance) => (dispatch) => {
       )
     })
     .catch(
-      //If we receive an error from the server (i.e. something failed), we dispatch action creator postGetArtFailure
       error => dispatch(
         postGetArtFailure({
           type: types.POST_GET_ART_FAILURE,
@@ -214,7 +199,97 @@ export const getArtSorted = (latitude, longitude, distance) => (dispatch) => {
         })
       )
     )
-}
+};
+
+export const getArtPriceDescending = (latitude, longitude, distance) => (dispatch) => {
+  axios.get(
+    '/api/getartpricedescending',
+    {
+      params: {
+        latitude: Number(latitude),
+        longitude: Number(longitude),
+        distance: Number(distance)
+      }
+    },
+    
+  )
+    .then(response => {
+      return dispatch(
+        postGetArtSuccess({
+          type: types.POST_GET_ART_SUCCESS,
+          payload: response.data
+        })
+      )
+    })
+    .catch(
+      error => dispatch(
+        postGetArtFailure({
+          type: types.POST_GET_ART_FAILURE,
+          payload: error
+        })
+      )
+    )
+};
+
+export const getArtSizeAscending = (latitude, longitude, distance) => (dispatch) => {
+  axios.get(
+    '/api/getartsizeascending',
+    {
+      params: {
+        latitude: Number(latitude),
+        longitude: Number(longitude),
+        distance: Number(distance)
+      }
+    },
+    
+  )
+    .then(response => {
+      return dispatch(
+        postGetArtSuccess({
+          type: types.POST_GET_ART_SUCCESS,
+          payload: response.data
+        })
+      )
+    })
+    .catch(
+      error => dispatch(
+        postGetArtFailure({
+          type: types.POST_GET_ART_FAILURE,
+          payload: error
+        })
+      )
+    )
+};
+
+export const getArtSizeDescending = (latitude, longitude, distance) => (dispatch) => {
+  axios.get(
+    '/api/getartsizedescending',
+    {
+      params: {
+        latitude: Number(latitude),
+        longitude: Number(longitude),
+        distance: Number(distance)
+      }
+    },
+    
+  )
+    .then(response => {
+      return dispatch(
+        postGetArtSuccess({
+          type: types.POST_GET_ART_SUCCESS,
+          payload: response.data
+        })
+      )
+    })
+    .catch(
+      error => dispatch(
+        postGetArtFailure({
+          type: types.POST_GET_ART_FAILURE,
+          payload: error
+        })
+      )
+    )
+};
 
 //Used above, utilizing THUNK
 export const postGetArtSuccess = (res) => ({

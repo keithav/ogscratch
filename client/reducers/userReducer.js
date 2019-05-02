@@ -188,6 +188,7 @@ const userReducer = (state = initialState, action) => {
       newEmail = '';
       newLongitude = '';
       newLatitude = '';
+      newDistance = 50;
       newBio = '';
       newNeedsToSignup = false;
       newUserCreated = false;
@@ -203,6 +204,7 @@ const userReducer = (state = initialState, action) => {
         email: newEmail,
         longitude: newLongitude,
         latitude: newLatitude,
+        distance: newDistance,
         bio: newBio,
         verified: newVerified,
         error: newError,
