@@ -16,7 +16,9 @@
 
 .artUnit:hover {
   transition: all .125s linear;
-  background: #D8DCDE;
+  background: #EDF7FF;
+  /* D8DCDE */
+
 }
 
 .artUnit {
