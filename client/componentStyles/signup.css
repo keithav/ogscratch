@@ -61,3 +61,7 @@ label.signup {
   float: left;
   margin: 8px;
 }
+
+#goback {
+  align-self: left;
+}
