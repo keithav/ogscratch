@@ -9,6 +9,7 @@ import store from './store';
 import Logout from './components/Logout';
 
 
+
 //IMPORTANT - any new components added that will be displayed upon rerouting, must make route here first. Follow pattern below. 
 const Root = ({ store }) => (
     <Provider store={store}>

@@ -41,3 +41,15 @@ button:focus {outline:0;}
   text-align: center;
   color: white;
 }
+
+#usernameLink {
+  text-align: right;
+  padding-right: 20px;
+  color: white;
+  font-family: sans-serif;
+}
+
+a {
+  font-family: sans-serif;
+  padding-left: 20px;
+}
