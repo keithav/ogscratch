@@ -211,7 +211,7 @@ export const getArtPriceDescending = (latitude, longitude, distance) => (dispatc
         distance: Number(distance)
       }
     },
-    
+
   )
     .then(response => {
       return dispatch(
@@ -303,8 +303,8 @@ export const postGetArtFailure = (err) => ({
   payload: err
 });
 
-export const clearStateOnLogout = () => ({
-  type: types.CLEAR_STATE_ON_LOGOUT,
+export const clearState = () => ({
+  type: types.CLEAR_STATE,
   payload: true
 })
 

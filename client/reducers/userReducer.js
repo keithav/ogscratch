@@ -177,7 +177,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
       };
 
-    case types.CLEAR_STATE_ON_LOGOUT:
+    case types.CLEAR_STATE:
       console.log('In clear logout reducer')
       newVerified = null;
       newError = null;

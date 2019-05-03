@@ -64,7 +64,7 @@ class Home extends Component {
 
     return (
       <div id="pageContainer">
-        <h1 id="pageTitle">Current Art Available</h1>
+        <h1 id="pageTitle">Current Art Available within{' '}{this.props.distance} Miles</h1>
 
         <div id="usernameLink">
           <strong>{this.props.username}<Link to="/logout">Logout</Link></strong>

@@ -39,6 +39,7 @@ button:focus {outline:0;}
 
 #pageTitle {
   text-align: center;
+  padding-top: 20px;
   color: white;
 }
 
