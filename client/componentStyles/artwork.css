@@ -79,7 +79,7 @@ body {
 }
 
 .artUnit img:hover {
-  transform: scale(1.2);
+  transform: scale(1.05);
   /* box-shadow: 36px 36px 20px -12px red; */
   transition: all 1.25s ease-in-out;
 }

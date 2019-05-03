@@ -26,7 +26,10 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   getArt: () => dispatch(actions.getArt()),
   updateDistance: (event) => dispatch(actions.updateDistance(event.target)),
-  getArtSorted: (latitude, longitude, distance) => dispatch(actions.getArtSorted(latitude, longitude, distance)),
+  getArtPriceAscending: (latitude, longitude, distance) => dispatch(actions.getArtPriceAscending(latitude, longitude, distance)),
+  getArtPriceDescending: (latitude, longitude, distance) => dispatch(actions.getArtPriceDescending(latitude, longitude, distance)),
+  getArtSizeAscending: (latitude, longitude, distance) => dispatch(actions.getArtSizeAscending(latitude, longitude, distance)),
+  getArtSizeDescending: (latitude, longitude, distance) => dispatch(actions.getArtSizeDescending(latitude, longitude, distance)),
   clearStateOnLogout: () => dispatch(actions.clearStateOnLogout()),
 });
 
@@ -38,7 +41,7 @@ class Home extends Component {
 
   componentDidMount() {
     // console.log("ON WILL MOUNT: CALLING this.props.getArt()");
-    this.props.getArtSorted(this.props.latitude, this.props.longitude, this.props.distance);
+    this.props.getArtPriceAscending(this.props.latitude, this.props.longitude, this.props.distance);
 
   }
 
@@ -70,7 +73,7 @@ class Home extends Component {
         <input type="text" onChange={(e) => this.props.updateDistance(e)}></input>
         <button onClick={(e) => {
           e.preventDefault();
-          this.props.getArtSorted(this.props.latitude, this.props.longitude, this.props.distance);
+          this.props.getArtPriceAscending(this.props.latitude, this.props.longitude, this.props.distance);
         }}>Submit</button>
 
         <div id="artTray">

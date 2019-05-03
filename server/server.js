@@ -34,7 +34,22 @@ app.get('/api/getallart/', queryController.getAllArt, (req, res) => {
   else res.send(res.locals.result.rows);
 });
 
-app.get('/api/getallartpriceascending/', queryController.getAllArtPriceAscending, (req, res) => {
+app.get('/api/getartpriceascending/', queryController.getArtPriceAscending, (req, res) => {
+  if (res.locals.error) res.send(res.locals.error);
+  else res.send(res.locals.result.rows);
+});
+
+app.get('/api/getartpricedescending/', queryController.getArtPriceDescending, (req, res) => {
+  if (res.locals.error) res.send(res.locals.error);
+  else res.send(res.locals.result.rows);
+});
+
+app.get('/api/getartsizeascending/', queryController.getArtSizeAscending, (req, res) => {
+  if (res.locals.error) res.send(res.locals.error);
+  else res.send(res.locals.result.rows);
+});
+
+app.get('/api/getartsizedescending/', queryController.getArtSizeDescending, (req, res) => {
   if (res.locals.error) res.send(res.locals.error);
   else res.send(res.locals.result.rows);
 });
